@@ -8,6 +8,16 @@
 
 'use strict';
 
+//Localhost unsecure http connections are allowed
+if (document.location.hostname !== "localhost") {
+    //check if the user is using http vs. https & redirect to https if needed
+    if (document.location.protocol != "https:"){
+        $(document).html("This doesn't work well on http. Redirecting to https");
+        console.log("redirecting to https");
+        document.location.href = "https:" + document.location.href.substring(document.location.protocol.length);
+    }
+}
+
 var getMediaButton = document.querySelector('button#getMedia');
 var connectButton = document.querySelector('button#connect');
 var hangupButton = document.querySelector('button#hangup');
